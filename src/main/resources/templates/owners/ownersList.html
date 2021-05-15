@@ -13,7 +13,9 @@
             <th style="width: 200px;">Address</th>
             <th>City</th>
             <th style="width: 120px">Telephone</th>
+            <th style="width: 80px">Email</th>
             <th>Pets</th>
+            <th>Preferred Contact</th>
         </tr>
         </thead>
         <tbody>
@@ -24,6 +26,8 @@
               <td th:text="${owner.address}"/>
               <td th:text="${owner.city}"/>
               <td th:text="${owner.telephone}"/>
+              <td th:text="${owner.email}"/>
+              <td th:text="${owner.preferredContact}"/>
               <td><span th:each="pet : ${owner.pets}" th:text="${pet.name} "/></td>
           </tr>
         </tbody>
