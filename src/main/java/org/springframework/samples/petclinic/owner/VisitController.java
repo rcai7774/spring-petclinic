@@ -89,4 +89,21 @@ class VisitController {
 		}
 	}
 
+	@GetMapping("/owners/*/pets/{petId}/{visitId}/update")
+	public String initUpdateVisitForm(@PathVariable("petId") int petId, Map<String, Object> model) {
+		return "pets/createOrUpdateVisitForm";
+	}
+
+	// Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is called
+	@PostMapping("/owners/{ownerId}/pets/{petId}/{visitId}/update")
+	public String processUpdateVisitForm(@Valid Visit visit, BindingResult result) {
+		if (result.hasErrors()) {
+			return "pets/createOrUpdateVisitForm";
+		}
+		else {
+			this.visits.save(visit);
+			return "redirect:/owners/{ownerId}";
+		}
+	}
+
 }
